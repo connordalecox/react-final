@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+}
+.productItemsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(3, minmax(200px, 1fr)); */
+  border: 1px solid black;
+}
