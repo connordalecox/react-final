@@ -40,7 +40,7 @@ export default function CheckoutPage() {
                         <div className='checkoutInfoDiv'>
                             <h2>{items.itemName}</h2>
                             <p>Quantity: {items.itemQuantity}</p>
-                            <p>${items.itemPrice}</p>
+                            <p>${items.itemPrice.toFixed(2)}</p>
                         </div>
                     </div>
                 )
@@ -80,7 +80,9 @@ export default function CheckoutPage() {
                     <input placeholder='Experation' className='exp'></input>
                     <input placeholder='Security Code' className='security'></input>
                 </div>
-                <input type='submit' className='submitBtn'></input>
+                <div className='BtnDiv'>
+                    <input type='submit' value='Submit Order'className='submitBtn'></input>
+                </div>
             </form>
         </div>
     </div>

@@ -5,13 +5,20 @@ import {useParams} from 'react-router-dom'
 import './productDetails.css'
 import {Link} from 'react-router-dom'
 import Header from '../header/Header'
+import {NumericFormat} from 'react-number-format'
+import { useRef } from 'react'
 
 export default function ProductDetails() {
     const {products, quantity, setQuantity, setCart, cart} = useCartData()
     const {id} = useParams()
+    const zeroQuan = useRef(1) 
     const findProduct = products.find(item => item.id == id)
     const quantityHandler = (event) => {
-        setQuantity(event.target.value)
+        if (isNaN(event.target.value) || event.target.value.includes('-')) {
+            setQuantity(1)
+        } else {setQuantity(Number(event.target.value))}
+
+        
     }
     const addedToCart = (itemId) => {
         const locateProduct = cart.find(item => item.id == itemId)
@@ -42,9 +49,9 @@ export default function ProductDetails() {
                 <p className='productDetailsDesc'>{findProduct.description}</p>
                 <div className='quantDiv'>
                     <label htmlFor='#quantityChoose'>Quantity: </label>
-                    <input value={quantity} onChange={(event) => quantityHandler(event)} className='productDetailsInput' id='quantityChoose'></input>
+                    <input value={quantity} onChange={(event) => quantityHandler(event)} className='productDetailsInput' id='quantityChoose' ref={zeroQuan}></input>
                 </div>
-                <button className='productDetailsButton' onClick={() => addedToCart(findProduct.id)}>Add to Cart</button>
+                {Number(zeroQuan.current.value) !== 0 && <button className='productDetailsButton' onClick={() => addedToCart(findProduct.id)}>Add to Cart</button>}
                 
             </div>
         )}
