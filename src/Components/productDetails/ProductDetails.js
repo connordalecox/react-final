@@ -2,6 +2,9 @@ import React from 'react'
 import { useCartData } from '../../context/ContextForCart'
 import product from '../Product/Product'
 import {useParams} from 'react-router-dom'
+import './productDetails.css'
+import {Link} from 'react-router-dom'
+import Header from '../header/Header'
 
 export default function ProductDetails() {
     const {products, quantity, setQuantity, setCart, cart} = useCartData()
@@ -14,12 +17,12 @@ export default function ProductDetails() {
         const locateProduct = cart.find(item => item.id == itemId)
         if (locateProduct === undefined) {
             setCart((lastCart) => {
-                return [...lastCart, {itemName:findProduct.title, itemQuantity:quantity, itemPrice:findProduct.price, itemImage:findProduct.image, id:findProduct.id}]
+                return [...lastCart, {itemName:findProduct.title, itemQuantity:quantity, itemPrice:findProduct.price, itemImage:findProduct.image, id:findProduct.id, totalCost:quantity * findProduct.price}]
             })
         } else {
             const addSameItem = cart.map(item => {
                 if (item.id == itemId) {
-                    return {...item, itemQuantity:item.itemQuantity + quantity}
+                    return {...item, itemQuantity:item.itemQuantity + quantity, totalCost:item.totalCost + quantity * findProduct.price}
                 }
                 return item
             })
@@ -29,15 +32,20 @@ export default function ProductDetails() {
     }
   return (
     <div>
+        <Header />
         {products.length > 0 && (
-            <div>
-                <img src={findProduct.image}></img>
-                <h1>{findProduct.title}</h1>
-                <p>{findProduct.price}</p>
-                <p>{findProduct.catergory}</p>
-                <p>{findProduct.description}</p>
-                <button onClick={() => addedToCart(findProduct.id)}>Add to Cart</button>
-                <input value={quantity} onChange={(event) => quantityHandler(event)}></input>
+            <div className='productDetailsPageContainer'>
+                <img src={findProduct.image} className='productDetailsImg'></img>
+                <h1 className='productDetailsH1'>{findProduct.title}</h1>
+                <p className='productDetailsPrice'>${findProduct.price.toFixed(2)}</p>
+                <p className='productDetailsCat'>{findProduct.category}</p>
+                <p className='productDetailsDesc'>{findProduct.description}</p>
+                <div className='quantDiv'>
+                    <label htmlFor='#quantityChoose'>Quantity: </label>
+                    <input value={quantity} onChange={(event) => quantityHandler(event)} className='productDetailsInput' id='quantityChoose'></input>
+                </div>
+                <button className='productDetailsButton' onClick={() => addedToCart(findProduct.id)}>Add to Cart</button>
+                
             </div>
         )}
         {products.length === 0 && (

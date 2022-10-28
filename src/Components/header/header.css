@@ -1,0 +1,35 @@
+.headerContainer {
+  text-align: right;
+  text-decoration: none;
+  color: black;
+  height: 4rem;
+  padding: 0px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #168eff;
+  position: sticky;
+  top: 10px;
+  z-index: 1;
+  border-radius: 50px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px 1px;
+  align-items: center;
+  left: 25%;
+  width: 50%;
+  /* margin-top: 10px; */
+}
+
+i {
+  color: black;
+  font-size: 2rem;
+}
+
+h1 {
+  font-style: italic;
+  color: rgb(0, 0, 0);
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+}

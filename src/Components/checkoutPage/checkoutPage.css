@@ -1,0 +1,93 @@
+.checkoutImg {
+  max-height: 100px;
+}
+
+.checkoutImgDiv {
+  margin-right: 10px;
+}
+
+.checkoutPageDiv {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin-top: 50px;
+}
+
+.checkoutItems {
+  display: flex;
+  align-items: center;
+}
+
+.masterDiv {
+  /* display: flex; */
+}
+
+.formDiv {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  padding-right: 20px;
+  width: 40%;
+}
+
+.formDiv div {
+  margin-top: 20px;
+}
+
+.formDiv h2 {
+  text-align: center;
+}
+
+#name {
+  width: 15rem;
+}
+
+.formDiv input {
+  height: 30px;
+}
+
+.ship,
+.nameDiv,
+.bill,
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitBtn {
+  margin-top: 10px;
+}
+
+.street {
+  width: 450px;
+}
+
+.city {
+  width: 200px;
+}
+.state {
+  width: 50px;
+}
+
+.zip {
+  width: 100px;
+}
+
+.name {
+  width: 15rem;
+}
+
+.cardNumber {
+  width: 250px;
+}
+
+.exp {
+  width: 75px;
+}
+.security {
+  width: 90px;
+}
+
+label {
+  font-weight: bold;
+}
